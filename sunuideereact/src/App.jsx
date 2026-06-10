@@ -1,3 +1,5 @@
+import CardIdee from './Cardidee';
+
 function App() {
   // Déclaration du faux tableau de données (Mock) avec la structure demandée
   const idees = [
@@ -12,6 +14,7 @@ function App() {
       {idees.map((idee) => (
         <CardIdee
           key={idee.id}
+          id={idee.id}
           titre={idee.titre}
           description={idee.description}
         />
@@ -20,23 +23,5 @@ function App() {
   );
 }
 
-// Le Moule (UI) : Composant CardIdee isolé et intelligent
-function CardIdee({ titre, description }) {
-  const cardStyle = {
-    border: '1px solid #ddd',
-    borderRadius: '10px',
-    padding: '20px',
-    marginBottom: '20px',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-    backgroundColor: '#fff'
-  };
 
-  return (
-    <div style={cardStyle}>
-      <h2 style={{ marginTop: 0, color: '#34495e' }}>{titre}</h2>
-      <p>{description}</p>
-      <button style={{ padding: '10px 15px', cursor: 'pointer', backgroundColor: '#3498db', color: '#fff', border: 'none', borderRadius: '5px' }}>Voter</button>
-    </div>
-  );
-}
 export default App;
