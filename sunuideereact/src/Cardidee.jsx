@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Link} from "react-router-dom";
 
 // Le Moule (UI) : Composant CardIdee isolé et intelligent
 function CardIdee({ id, titre, description }) {
@@ -41,6 +42,20 @@ function CardIdee({ id, titre, description }) {
           {'Voter'}
         </button>
         <span style={{ fontWeight: 'bold', color: '#7f8c8d' }}>{votes} votes</span>
+        <Link 
+          to={`/details/${id}`}
+          style={{ 
+            padding: '10px 15px', 
+            backgroundColor: '#51e40d', 
+            color: '#fff', 
+            textDecoration: 'none',
+            borderRadius: '5px',
+            transition: 'background-color 0.3s',
+            display: 'inline-block'
+          }}
+        >
+          Détails
+        </Link>
       </div>
     </div>
   );

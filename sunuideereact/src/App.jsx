@@ -1,4 +1,7 @@
 import CardIdee from './Cardidee';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Details from './detailes.jsx';
+
 
 function App() {
   // Déclaration du faux tableau de données (Mock) avec la structure demandée
@@ -9,17 +12,29 @@ function App() {
   ];
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{ textAlign: 'center', color: '#ffffff' }}>Sunu-Idées</h1>
-      {idees.map((idee) => (
-        <CardIdee
-          key={idee.id}
-          id={idee.id}
-          titre={idee.titre}
-          description={idee.description}
-        />
-      ))}
-    </div>
+    <BrowserRouter>
+      <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
+        <h1 style={{ textAlign: 'center', color: '#333' }}>Sunu-Idées</h1>
+        
+        <Routes>
+          {/* Route pour la liste des idées */}
+          <Route path="/" element={
+            <div>
+              {idees.map((idee) => (
+                <CardIdee
+                  key={idee.id}
+                  id={idee.id}
+                  titre={idee.titre}
+                  description={idee.description}
+                />
+              ))}
+            </div>
+          } />
+          {/* Route dynamique pour les détails d'une idée */}
+          <Route path="/details/:id" element={<Details idees={idees} />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
